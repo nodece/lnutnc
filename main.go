@@ -165,26 +165,26 @@ func main() {
 	}
 
 	userid := os.Getenv("LNUT_USERID")
-	if len(u) != 0 {
+	if len(userid) != 0 {
 		u = userid
 	}
 
 	password := os.Getenv("LNUT_PASSWORD")
-	if len(p) != 0 {
+	if len(password) != 0 {
 		p = password
 	}
 
-	if len(userid) == 0 || len(password) == 0 {
+	if len(u) == 0 || len(p) == 0 {
 		Help()
 		return
 	}
 
 	fmt.Println("Welcome to connect to LNUT network - Zixuan Liu(nodeces@gmail.com)")
 
-	log.Printf("using %s to login to LNUT network\n", userid)
+	log.Printf("using %s to login to LNUT network\n", u)
 
 	for {
-		err := GoConnect(userid, password)
+		err := GoConnect(u, p)
 		if err != nil {
 			log.Println(err)
 			time.Sleep(3 * time.Second)
